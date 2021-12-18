@@ -1,8 +1,8 @@
 import { FC, useContext, useEffect, useState } from 'react';
 import { DatepickerCtx } from '../../../context/date-context';
-import MonthSelection from '../calendar/month-selection';
-import YearSelection from '../calendar/year-selection';
-import DateSelection from '../date-selector';
+import DateSelector from '../date-selector';
+import MonthSelection from '../month-selector';
+import YearSelector from '../year-selector';
 
 const DatePickerLayout: FC = () => {
   const { view } = useContext(DatepickerCtx);
@@ -24,11 +24,11 @@ const DatePickerLayout: FC = () => {
   function SelectedView(): JSX.Element {
     switch (view) {
       case 'date':
-        return <DateSelection />;
+        return <DateSelector />;
       case 'month':
         return <MonthSelection />;
       case 'year':
-        return <YearSelection />;
+        return <YearSelector />;
       default:
         return <></>;
     }

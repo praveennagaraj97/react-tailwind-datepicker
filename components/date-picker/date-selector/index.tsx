@@ -32,8 +32,8 @@ const DateSelector: FC = (props) => {
       dates.push(
         <button
           key={`day${i}`}
-          className={`hover:bg-gray-200 rounded p-1 text-sm ${
-            isSelectedDate(i) ? 'bg-gray-300 font-semibold' : ''
+          className={`hover:bg-slate-500/10 rounded p-1 text-sm ${
+            isSelectedDate(i) ? 'bg-slate-500/30 font-semibold' : ''
           }`}
           onClick={() => selectDate(i)}
           style={{ textAlign: 'center' }}

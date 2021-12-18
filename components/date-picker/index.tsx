@@ -15,16 +15,14 @@ interface DatePickerProps {
   onChange: (date: Date) => void;
 }
 
-export const DatePicker: React.FC<DatePickerProps> = (props) => {
-  const ctxValue = useDatepickerCtx(props.date, props.onChange);
+export const DatePicker: React.FC<DatePickerProps> = ({ date, onChange }) => {
+  const ctxValue = useDatepickerCtx(date, onChange);
 
   const varients: { animate: Variant; initial: Variant; exit: Variant } = {
     animate: { y: 0, opacity: 1 },
     exit: { opacity: 0 },
     initial: { y: '-10%', opacity: 0 },
   };
-
-  console.log(formattedDate(props.date));
 
   return (
     <DatepickerCtx.Provider value={ctxValue}>
@@ -33,6 +31,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
           className="common-input drop-shadow-sm"
           placeholder="Date of birth"
           type="text"
+          value={formattedDate(date)}
           onFocus={() => ctxValue.showCalendar()}
           readOnly
         />
@@ -43,17 +42,17 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
           <FcCalendar fontSize={24} />
         </button>
         <AnimatePresence exitBeforeEnter>
-          {
+          {ctxValue.isVisible && (
             <motion.div
               variants={varients}
               initial="initial"
               animate="animate"
               exit="exit"
-              className="absolute left-0 z-10 "
+              className="absolute left-0 z-10 bg-white"
             >
               <DatePickerLayout />
             </motion.div>
-          }
+          )}
         </AnimatePresence>
       </div>
     </DatepickerCtx.Provider>

@@ -1,5 +1,5 @@
 import { FC, useContext } from 'react';
-import { FiChevronLeft, FiChevronsRight } from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { DatepickerCtx } from '../../../context/date-context';
 import { monthNames } from '../../../utils/date-utils';
 
@@ -15,10 +15,10 @@ const Header: FC = () => {
   } = useContext(DatepickerCtx);
 
   return (
-    <header className="grid grid-cols-7">
+    <header className="grid grid-cols-7 ">
       <button
         className={
-          'hover:bg-gray-200 rounded p-1 text-sm flex align-center justify-center focus:outline-none grid-cols-1'
+          'hover:bg-slate-500/30 rounded p-1 text-sm flex align-center justify-center focus:outline-none grid-cols-1'
         }
         onClick={(e) => prevMonth()}
       >
@@ -26,7 +26,7 @@ const Header: FC = () => {
       </button>
 
       <button
-        className={`hover:bg-gray-200 rounded p-1 text-sm flex align-center justify-center focus:outline-none font-semibold grid-cols-3`}
+        className={`hover:bg-slate-500/30 rounded p-1 text-sm flex align-center justify-center focus:outline-none font-semibold grid-cols-3`}
         style={{ gridColumn: '2/5' }}
         onClick={(e) => viewMonths()}
       >
@@ -34,7 +34,7 @@ const Header: FC = () => {
       </button>
 
       <button
-        className={`hover:bg-gray-200 rounded p-1 text-sm flex align-center justify-center focus:outline-none font-semibold grid-cols-2`}
+        className={`hover:bg-slate-500/30 rounded p-1 text-sm flex align-center justify-center focus:outline-none font-semibold grid-cols-2`}
         style={{ gridColumn: '5/7' }}
         onClick={(e) => viewYears()}
       >
@@ -43,11 +43,11 @@ const Header: FC = () => {
 
       <button
         className={
-          'hover:bg-gray-200 rounded p-1 text-sm flex align-center justify-center focus:outline-none grid-cols-1'
+          'hover:bg-slate-500/30 rounded p-1 text-sm flex align-center justify-center focus:outline-none grid-cols-1'
         }
         onClick={(e) => nextMonth()}
       >
-        <FiChevronsRight size={20} className="stroke-current" />
+        <FiChevronRight size={20} className="stroke-current" />
       </button>
     </header>
   );

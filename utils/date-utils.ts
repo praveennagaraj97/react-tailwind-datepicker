@@ -24,7 +24,7 @@ export const monthNames = [
 ];
 
 /**
- * @description Formates date
+ * @description Formats date
  * @param date
  * @returns formated date.
  */

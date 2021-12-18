@@ -28,7 +28,7 @@ interface DatepickerContextType {
   isSelectedDate: (d: number) => boolean;
 }
 
-export const DatepickerCtx = createContext<DatepickerContextType>({
+const initialState: DatepickerContextType = {
   date: new Date(),
   visible: {
     month: 0,
@@ -49,8 +49,10 @@ export const DatepickerCtx = createContext<DatepickerContextType>({
   isVisible: false,
   showCalendar: () => {},
   toggleCalendar: () => {},
-  isSelectedDate: (d) => false,
-});
+  isSelectedDate: () => false,
+};
+
+export const DatepickerCtx = createContext<DatepickerContextType>(initialState);
 
 export function useDatepickerCtx(
   date: Date,
@@ -91,21 +93,6 @@ export function useDatepickerCtx(
     setView('month');
   };
 
-  // useEffect(() => {
-  //   function mouseDownListener(e: MouseEvent) {
-  //     setVisible(false);
-  //   }
-
-  //   if (isVisible) {
-  //     setMonthYear({ month: date.getMonth(), year: date.getFullYear() });
-  //     document.addEventListener('mousedown', mouseDownListener);
-  //   }
-
-  //   return () => {
-  //     document.removeEventListener('mousedown', mouseDownListener);
-  //   };
-  // }, [date, isVisible]);
-
   return {
     date,
     visible: monthYear,
@@ -127,9 +114,9 @@ export function useDatepickerCtx(
     prevYear: () =>
       setMonthYear((state) => ({ ...state, year: state.year - 1 })),
     nextDecade: () =>
-      setMonthYear((state) => ({ ...state, year: state.year + 12 })),
+      setMonthYear((state) => ({ ...state, year: state.year + 10 })),
     prevDecade: () =>
-      setMonthYear((state) => ({ ...state, year: state.year - 12 })),
+      setMonthYear((state) => ({ ...state, year: state.year - 10 })),
     selectMonth,
     selectYear,
     selectDate,
